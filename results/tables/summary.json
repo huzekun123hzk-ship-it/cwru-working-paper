@@ -1,0 +1,30 @@
+{
+  "R": {
+    "accuracy_mean": 0.9660252156602521,
+    "accuracy_std": 0.013346832739773992,
+    "macro_f1_mean": 0.9727446652432793,
+    "macro_f1_std": 0.010310247354303895,
+    "phys_consistency_true_mean": 0.6168246211741935,
+    "phys_consistency_true_std": 0.010862347385832577,
+    "phys_consistency_negctrl_mean": 0.3538836875101806,
+    "phys_consistency_negctrl_std": 0.01494652337179859,
+    "pc_margin_mean": 0.26294093366401283,
+    "pc_margin_std": 0.014535893249095776
+  },
+  "S": {
+    "accuracy_mean": 0.9134161837007053,
+    "accuracy_std": 0.03992974293987132,
+    "macro_f1_mean": 0.9259115270095437,
+    "macro_f1_std": 0.032654699896635095,
+    "phys_consistency_true_mean": 0.5968298435471951,
+    "phys_consistency_true_std": 0.02119589492332515,
+    "phys_consistency_negctrl_mean": 0.42922869529819757,
+    "phys_consistency_negctrl_std": 0.019254002681197705,
+    "pc_margin_mean": 0.16760114824899752,
+    "pc_margin_std": 0.027579959906354565
+  },
+  "ILG": 0.09533978541501531,
+  "ILG_pc_true": 0.019994777626998306,
+  "generalization_gap": 0.052609031959546804,
+  "dataset": "DE"
+}

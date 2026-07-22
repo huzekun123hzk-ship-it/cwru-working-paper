@@ -1,0 +1,24 @@
+{
+  "dataset": "DE",
+  "n_seeds": 10,
+  "ILG": {
+    "mean": 0.09533978541501531,
+    "n_seeds": 10,
+    "paired_t_p": 1.0540239469365542e-06,
+    "wilcoxon_p": 0.001953125,
+    "ci95_low": 0.0790748570031204,
+    "ci95_high": 0.10959395264251363,
+    "n_seeds_positive": 10,
+    "complete_separation": true
+  },
+  "generalization_gap": {
+    "mean": 0.05260903195954693,
+    "n_seeds": 10,
+    "paired_t_p": 0.0010833934832964766,
+    "wilcoxon_p": 0.00390625,
+    "ci95_low": 0.03196038768962698,
+    "ci95_high": 0.07302310373593418,
+    "n_seeds_positive": 9,
+    "complete_separation": false
+  }
+}

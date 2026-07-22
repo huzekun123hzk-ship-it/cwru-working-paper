@@ -1,0 +1,16 @@
+{
+  "framing": "R test recordings are 100% seen in train; S test recordings are 0% seen.",
+  "within_record_seen": {
+    "protocol": "R",
+    "margin_mean": 0.26294093366401283,
+    "margin_std": 0.014535893249095776,
+    "n_seeds": 10
+  },
+  "cross_record_unseen": {
+    "protocol": "S",
+    "margin_mean": 0.16760114824899752,
+    "margin_std": 0.027579959906354565,
+    "n_seeds": 10
+  },
+  "delta_within_minus_cross": 0.09533978541501531
+}

@@ -1,0 +1,16 @@
+{
+  "adjacent_same_record": {
+    "time_corr_mean": -0.0028202069684204476,
+    "time_corr_std": 0.19277630748044108,
+    "spec_cosine_mean": 0.9074071960793236,
+    "spec_cosine_std": 0.04239500172617976,
+    "n": 7471
+  },
+  "cross_record_random": {
+    "time_corr_mean": 0.00012489293254218647,
+    "time_corr_std": 0.043164882969334024,
+    "spec_cosine_mean": 0.48959164893207807,
+    "spec_cosine_std": 0.17801030234117576,
+    "n": 4932
+  }
+}

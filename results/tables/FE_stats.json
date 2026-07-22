@@ -1,0 +1,24 @@
+{
+  "dataset": "FE",
+  "n_seeds": 10,
+  "ILG": {
+    "mean": 0.0476028415226483,
+    "n_seeds": 10,
+    "paired_t_p": 0.007618320857662581,
+    "wilcoxon_p": 0.009765625,
+    "ci95_low": 0.02223231168030759,
+    "ci95_high": 0.07318425944970175,
+    "n_seeds_positive": 9,
+    "complete_separation": false
+  },
+  "generalization_gap": {
+    "mean": 0.06098721908999142,
+    "n_seeds": 10,
+    "paired_t_p": 0.009789432101540837,
+    "wilcoxon_p": 0.013671875,
+    "ci95_low": 0.02543019696746152,
+    "ci95_high": 0.0943337225160913,
+    "n_seeds_positive": 8,
+    "complete_separation": false
+  }
+}
