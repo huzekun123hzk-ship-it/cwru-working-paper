@@ -1,0 +1,27 @@
+# Claim-Evidence Table
+
+Rule: No evidence, no claim. Every claim points to a specific artifact under `results/`.
+All numbers are 10-seed mean unless stated. Seeds = {0..9}. Per-seed values are reported
+in the paper (Table "Per-seed results") and trace to `results/tables/main_results.json`;
+statistical tests (paired-t, Wilcoxon, bootstrap CI) are in `results/tables/stats.json`;
+all background citations are verified in `paper/refs.bib` (see `ars/literature_matrix.md`).
+
+| # | Claim | Evidence | Artifact | Strength | Risk | Bounded wording |
+|---|---|---|---|---|---|---|
+| 1 | Adjacent windows from the same recording are far more similar than cross-recording pairs, creating a concrete leakage path. | Spectral cosine 0.907±0.042 (same-record adjacent) vs 0.490±0.178 (cross-record random). | `results/tables/intra_record_similarity.json`, `fig_intra_record_similarity.png` | Strong | Similarity metric choice | Random-window splitting mixes highly similar windows across train/test on CWRU. |
+| 2 | Random-window leakage inflates accuracy relative to a recording-level split. | acc R=0.966±0.013 vs S=0.913±0.040; gen. gap = +0.053 (95% CI [0.032,0.073], paired-t p=1.1e-3). | `results/tables/summary.json`, `stats.json` | Moderate | full-data accuracy high for both | Under matched settings, the random-window protocol reports ~5.3 points higher accuracy than the leakage-safe protocol. |
+| 3 | On full data, accuracy is a weak leakage detector because both protocols are near-saturated. | Both protocols exceed 0.91 accuracy; gap small vs S-variance. | `results/tables/summary.json`, `results/logs/run_log.txt` | Strong | — | Accuracy alone cannot reliably reveal leakage on CWRU 4-class. |
+| 4 | The envelope spectrum places fault energy in physically meaningful bands (representation validity). | Fault-band energy fraction: IR 0.79, OR 0.66, B 0.57, Normal 0.47. | diagnostic (`diag_envelope_pc.py` stdout); reproduced in `run_ablations` bandpass path | Moderate | nominal rpm | Envelope-spectrum fault-band energy is higher for fault classes than Normal. |
+| 5 | Grad-CAM saliency lands in true fault bands well above a shifted-band negative control (explanations are physically grounded, not band-definition bias). | PC_true 0.617 vs PC_neg 0.354 (R), 0.597 vs 0.429 (S). | `results/tables/main_results.json` | Moderate | band halfwidth/shift choice | Saliency concentrates in true fault bands more than in shifted control bands. |
+| 6 | Random-window leakage also inflates the APPARENT physical consistency (interpretability) of Grad-CAM. ILG > 0, statistically significant. | Grad-CAM margin R=0.263±0.015 vs S=0.168±0.028; ILG = +0.095, 95% CI [0.079,0.110], paired-t p=1.1e-6, Wilcoxon p=0.002, 10/10 seeds positive. | `results/tables/summary.json`, `stats.json` | Strong (10 seeds, significant) | one representation | The random-window protocol shows a significantly higher Grad-CAM margin than the safe protocol; interpretability appearance is leakage-inflated. |
+| 7 | The inflation is explained by memorization of seen recordings, not stronger physics. | within-record (seen, R) margin 0.263 vs cross-record (unseen, S) 0.168; delta 0.095. R test recordings 100% present in train, S 0%. | `results/tables/within_vs_cross_margin.json` | Moderate | framing relies on split composition | Seen-recording test samples show higher apparent focus than unseen-recording samples. |
+| 8 | The leakage-inflated accuracy persists under low data. | DE gap R-S = +0.011 (k=10), +0.027 (k=25), +0.062 (k=50); FE +0.058/+0.096/+0.070. | `results/tables/ablations.json`, `FE_ablations.json` (lowdata) | Moderate | small test sets | The accuracy gap holds across data budgets. |
+| 9 | Fault-size is a hidden shortcut: splitting by fault_size collapses accuracy, on both datasets. | DE: by recording 0.948±0.033, load 0.940±0.019, fault_size 0.371±0.225; FE: fault_size 0.548±0.156 vs recording 0.821±0.046. | `results/tables/ablations.json`, `FE_ablations.json` (grouping) | Strong (10 seeds, both datasets) | — | Testing on unseen fault sizes drops accuracy sharply, indicating size-dependent features. |
+| 10 | The resonance bandpass is essential to the physical-consistency measure. | no-bandpass margin DE 0.010 (vs 0.168) and FE -0.033 (10 seeds). | `results/tables/ablations.json`, `FE_ablations.json` (bandpass) | Moderate | one representation | Removing the bandpass collapses the Grad-CAM margin, so the representation choice drives physical consistency. |
+| 11 | Both leakage effects (accuracy gap and ILG) transfer to an independent sensor location, with the ILG significant on both. | DE: gap +0.053, ILG +0.095 (p=1.1e-6); FE: gap +0.061, ILG +0.048 (95% CI [0.022,0.073], p=0.008). | `results/tables/summary.json`, `FE_summary.json`, `stats.json`, `fig_cross_dataset.png` | Strong (10 seeds, both significant) | both from CWRU | The accuracy gap and ILG are positive and significant on both drive-end and fan-end sensors. |
+
+## Claims explicitly NOT made
+- We do NOT claim leakage causes a large accuracy inflation on full data (it does not; see #3).
+- We do NOT claim field/industrial readiness (CWRU is a lab benchmark with seeded faults).
+- We do NOT claim the envelope-spectrum classifier is state-of-the-art; the classifier is a fixed vehicle for the protocol contrast.
+- We do NOT claim transfer beyond CWRU: both datasets (DE, FE) are from the same test rig; a physically distinct machine is untested.
