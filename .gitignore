@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# LaTeX build artifacts
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.toc
+paper/*.synctex.gz
+
+# Regenerable caches (rebuilt on demand by datautil.py)
+data_manifest/spec_cache.npz
+
+# OS
+.DS_Store
+Thumbs.db
