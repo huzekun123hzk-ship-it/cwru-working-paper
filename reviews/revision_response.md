@@ -2,7 +2,7 @@
 
 | Reviewer Concern | Response | Manuscript Change | Evidence |
 |---|---|---|---|
-| R1-1 Small accuracy gap could overstate | Agreed; abstract and Section 7 state the gap is only 4.5 pts and that the main effect is on interpretability. | Abstract, Sec 1, Sec 7, Sec 11 | summary.json |
+| R1-1 Small accuracy gap could overstate | Agreed; abstract and Section 7 state the gap is only 5.3 pts and that the main effect is on interpretability. | Abstract, Sec 1, Sec 7, Sec 11 | summary.json |
 | R1-2 ILG sign needs a direct control | Added seen-vs-unseen recording margin framing (R=100% seen, S=0% seen). | Sec 8, within_vs_cross_margin.json | within_vs_cross_margin.json |
 | R1-3 Single-seed ablations | Resolved: all experiments (main, ablations B/C, mechanism) re-run with ten seeds; ILG significant (DE paired-t p=1.1e-6, FE p=0.008). | Sec 7, Sec 9, Sec 11, stats.json | ablations.json, FE_ablations.json, stats.json |
 | R2-1 Nominal rpm band error | Added negative control (120 Hz shift) and stated residual risk in Limitations. | Sec 4, Sec 5, Sec 11 | main_results.json |

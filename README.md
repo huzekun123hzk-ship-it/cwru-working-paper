@@ -2,7 +2,7 @@
 
 A reproducible study contrasting a random-window split (R) and a recording-level split
 (S) on CWRU bearing diagnosis, using an envelope-spectrum 1D-CNN. Main finding: on full
-data, leakage inflates accuracy by only ~4.5 points but inflates the apparent physical
+data, leakage inflates accuracy by only ~5.3 points but inflates the apparent physical
 consistency of Grad-CAM explanations by an Interpretability Leakage Gap (ILG) of +0.095
 (95% CI [0.079, 0.110], paired-t p=1.1e-6 over ten seeds),
 driven by memorization of seen recordings.
